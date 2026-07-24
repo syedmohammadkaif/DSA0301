@@ -1,0 +1,6 @@
+
+text = input("Enter a sentence: ")
+words = text.split()
+print("\nWords are:")
+for word in words:
+    print(word)
