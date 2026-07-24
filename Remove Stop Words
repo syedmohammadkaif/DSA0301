@@ -1,0 +1,17 @@
+stop_words = [
+    "is","am","are","the","a","an","in",
+    "on","at","of","to","and","for","with"
+]
+
+text = input("Enter a sentence: ")
+
+words = text.lower().split()
+
+filtered = []
+
+for word in words:
+    if word not in stop_words:
+        filtered.append(word)
+
+print("After Removing Stop Words:")
+print(filtered)
