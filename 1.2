@@ -1,0 +1,10 @@
+# Sentence Tokenization
+
+text = input("Enter a paragraph: ")
+
+sentences = text.split(".")
+
+print("\nSentences are:")
+for sentence in sentences:
+    if sentence.strip() != "":
+        print(sentence.strip())
