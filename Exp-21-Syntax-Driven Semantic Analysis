@@ -1,0 +1,13 @@
+import nltk
+sentence = "The little boy is playing football."
+words = nltk.word_tokenize(sentence)
+grammar = r"""
+    NP: {<DT>?<JJ>*<NN>}
+"""
+tagged_words = nltk.pos_tag(words)
+parser = nltk.RegexpParser(grammar)
+tree = parser.parse(tagged_words)
+print("Noun Phrases:")
+for subtree in tree.subtrees():
+    if subtree.label() == "NP":
+        print(" ".join(word for word, tag in subtree.leaves()))
