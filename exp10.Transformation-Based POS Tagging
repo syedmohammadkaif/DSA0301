@@ -1,0 +1,8 @@
+words = ["I", "am", "running"]
+tags = ["NN", "VB", "NN"]
+
+for i in range(len(words)):
+    if words[i].endswith("ing"):
+        tags[i] = "VBG"
+
+print(list(zip(words, tags)))
