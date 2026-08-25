@@ -1,0 +1,13 @@
+from nltk.wsd import lesk
+from nltk.tokenize import word_tokenize
+import nltk
+
+nltk.download('wordnet')
+nltk.download('punkt')
+
+sentence = "I went to the bank to deposit money"
+
+sense = lesk(word_tokenize(sentence), "bank")
+
+print("Sense:", sense)
+print("Meaning:", sense.definition())
