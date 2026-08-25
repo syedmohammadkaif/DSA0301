@@ -1,0 +1,6 @@
+sentence = input("Enter sentence: ")
+
+if sentence == "He runs":
+    print("Agreement Correct")
+else:
+    print("Agreement Incorrect")
