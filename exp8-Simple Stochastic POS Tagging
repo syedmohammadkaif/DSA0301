@@ -1,0 +1,5 @@
+import random
+sentence = input("Enter a sentence: ").split()
+tags = ["NN", "VB", "JJ", "RB"]
+for word in sentence:
+    print(word, "->", random.choice(tags))
