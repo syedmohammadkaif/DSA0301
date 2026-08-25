@@ -1,0 +1,14 @@
+import nltk
+
+grammar = nltk.CFG.fromstring("""
+S -> NP VP
+NP -> 'I'
+VP -> 'run'
+""")
+
+parser = nltk.EarleyChartParser(grammar)
+
+sentence = "I run".split()
+
+for tree in parser.parse(sentence):
+    print(tree)
