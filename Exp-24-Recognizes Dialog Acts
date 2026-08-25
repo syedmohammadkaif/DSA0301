@@ -1,0 +1,42 @@
+import re
+def recognize_dialog_act(sentence):
+    sentence = sentence.lower().strip()
+    if re.search(r'\b(hello|hi|hey|good morning|good afternoon|good evening)\b', sentence):
+        return "Greeting"
+    elif re.search(r'\b(bye|goodbye|see you|see ya|good night)\b', sentence):
+        return "Goodbye"
+    elif re.search(r'\b(thank you|thanks|thankyou)\b', sentence):
+        return "Thanking"
+    elif re.search(r'\b(sorry|apologize|apologies)\b', sentence):
+        return "Apology"
+    elif sentence.endswith("?") or re.search(
+        r'\b(what|why|when|where|who|whom|which|how|is|are|do|does|did|can|could|will|would)\b',
+        sentence
+    ):
+        return "Question"
+    elif re.search(
+        r'\b(please|could you|can you|would you|give me|tell me|help me)\b',
+        sentence
+    ):
+        return "Request"
+    elif re.search(
+        r'\b(yes|no|okay|ok|sure|fine|i am|i will|it is|that is)\b',
+        sentence
+    ):
+        return "Answer/Statement"
+    else:
+        return "Statement"
+print("Enter the conversation.")
+print("Type 'END' when finished.\n")
+conversation = []
+while True:
+    sentence = input("You: ")
+    if sentence.upper() == "END":
+        break
+    conversation.append(sentence)
+print("\n--- Dialog Act Recognition ---")
+
+for i, sentence in enumerate(conversation, start=1):
+    act = recognize_dialog_act(sentence)
+    print(f"Sentence {i}: {sentence}")
+    print(f"Dialog Act: {act}\n")
