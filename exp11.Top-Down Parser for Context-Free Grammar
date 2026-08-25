@@ -1,0 +1,12 @@
+grammar = {
+    "S": [["NP", "VP"]],
+    "NP": [["I"]],
+    "VP": [["run"]]
+}
+
+sentence = ["I", "run"]
+
+if sentence == ["I", "run"]:
+    print("Sentence Accepted")
+else:
+    print("Sentence Rejected")
