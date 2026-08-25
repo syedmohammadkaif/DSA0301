@@ -1,0 +1,28 @@
+import spacy
+try:
+    nlp = spacy.load("en_core_web_sm")
+except OSError:
+    print("Downloading spaCy model 'en_core_web_sm'. This may take a moment...")
+    !python -m spacy download en_core_web_sm
+    nlp = spacy.load("en_core_web_sm")
+
+def perform_reference_resolution(text):
+    doc = nlp(text)
+    
+    print("Named Entities:")
+    entities = []
+    for ent in doc.ents:
+        entities.append(f"  - {ent.text} ({ent.label_})")
+    
+    if not entities:
+        print("  No named entities found.")
+    else:
+        for entity in entities:
+            print(entity)
+
+    print("\nTokens and their POS tags:")
+    for token in doc:
+        print(f"  - {token.text}\t{token.pos_}\t{token.dep_}")
+text = "Barack Obama was the 44th President of the United States. He was born in Hawaii. Michelle Obama is his wife."
+print("Original Text:", text)
+perform_reference_resolution(text)
