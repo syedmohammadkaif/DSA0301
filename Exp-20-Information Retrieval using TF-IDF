@@ -1,0 +1,13 @@
+from sklearn.feature_extraction.text import TfidfVectorizer
+documents = [
+    "Python is easy",
+    "Python is powerful",
+    "Machine learning uses Python"
+]
+
+vectorizer = TfidfVectorizer()
+
+tfidf = vectorizer.fit_transform(documents)
+
+print(vectorizer.get_feature_names_out())
+print(tfidf.toarray())
