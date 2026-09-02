@@ -1,0 +1,17 @@
+"""
+Component 1: Regex-based text normalisation & tokenization
+Component 2: Rule-based (finite-state / morphological) POS tagger
+"""
+import re
+
+TOKEN_RE = re.compile(r"[A-Za-z]+(?:'[A-Za-z]+)?|[!?.]")
+
+def clean_text(text: str) -> str:
+    text = text.lower()
+    text = re.sub(r"http\S+", " ", text)
+    text = re.sub(r"[^a-z0-9!?.'\s]", " ", text)
+    text = re.sub(r"\s+", " ", text).strip()
+    return text
+
+def tokenize(text: str):
+    return TOKEN_RE.findall(clean_text(text))
