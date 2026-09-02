@@ -1,0 +1,10 @@
+def tag_token(tok):
+    low = tok.lower()
+    if low in DETERMINERS: return "DET"
+    if low in PRONOUNS: return "PRON"
+    if low in PREPOSITIONS: return "PREP"
+    if low in INTENSIFIERS: return "INTENS"
+    if low.endswith(("ly",)): return "ADV"
+    if low.endswith(("ful","ive","able","est")): return "ADJ"
+    if low.endswith(("ed","ing","es")): return "VERB"
+    return "NOUN"  # open-class fallback
