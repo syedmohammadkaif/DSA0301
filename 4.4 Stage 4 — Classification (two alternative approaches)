@@ -1,0 +1,10 @@
+def rule_based_predict(text):
+    toks = tokenize(text)
+    n = max(len(toks), 1)
+    exclaim = toks.count("!")
+    superlatives = sum(1 for t in toks if t in SUPERLATIVES)
+    intens = sum(1 for t in toks if t in INTENSIFIERS)
+    repeat_ratio = (len(toks) - len(set(toks))) / n
+    score = (2*(exclaim>=3) + 2*(superlatives>=2)
+             + 1*(intens>=2) + 1*(repeat_ratio>0.15))
+    return 1 if score >= 3 else 0
