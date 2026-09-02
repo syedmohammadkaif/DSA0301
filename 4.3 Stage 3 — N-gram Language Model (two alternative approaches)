@@ -1,0 +1,4 @@
+def bigram_prob(w1, w2, unigrams, bigrams, vocab_size, k=0.0):
+    num = bigrams.get((w1, w2), 0) + k
+    den = unigrams.get(w1, 0) + k * vocab_size
+    return num / den if den and num > 0 else 1e-12
